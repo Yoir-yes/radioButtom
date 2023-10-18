@@ -8,10 +8,12 @@ class MyForm(QDialog):
     def __init__(self):
         super().__init__()
         self.ui = uic.loadUi('layout.ui', self)
-
+        self.ui.radioBuisness.toggled.connect(self.display_fare)
+        self.ui.radioEconomy.toggled.connect(self.display_fare)
+        self.ui.radioFirst.toggled.connect(self.display_fare)
         self.show()
 
-    def displayFare(self):
+    def display_fare(self):
         fare = 0
         if self.ui.radioFirst.isChecked():
             fare = 8000
